@@ -20,11 +20,13 @@ export class TuiOrderWeekDaysPipe implements PipeTransform {
     public transform(
         mondayFirstWeekDays$: Observable<readonly string[]>,
     ): Observable<readonly string[]> {
+        const firstDayOfWeekIndex = this.firstDayOfWeekIndex();
+
         return mondayFirstWeekDays$.pipe(
             map(convertToSundayFirstWeekFormat),
             map((weekDays) => [
-                ...weekDays.slice(this.firstDayOfWeekIndex),
-                ...weekDays.slice(0, this.firstDayOfWeekIndex),
+                ...weekDays.slice(firstDayOfWeekIndex),
+                ...weekDays.slice(0, firstDayOfWeekIndex),
             ]),
         );
     }
