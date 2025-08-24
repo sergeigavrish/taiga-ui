@@ -16,7 +16,11 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
-import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';
+import {
+    TUI_DAY_TYPE_HANDLER,
+    TUI_FIRST_DAY_OF_WEEK,
+    TUI_SHORT_WEEK_DAYS,
+} from '@taiga-ui/core/tokens';
 
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 
@@ -47,6 +51,7 @@ export class TuiCalendarSheet {
 
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
     protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
+    protected readonly firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
 
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();

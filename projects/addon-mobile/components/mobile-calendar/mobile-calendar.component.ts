@@ -45,6 +45,7 @@ import {
     TUI_ANIMATIONS_SPEED,
     TUI_CLOSE_WORD,
     TUI_COMMON_ICONS,
+    TUI_FIRST_DAY_OF_WEEK,
     TUI_SHORT_WEEK_DAYS,
 } from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
@@ -140,6 +141,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
     protected readonly doneWord$ = inject(TUI_DONE_WORD);
     protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly firstDayOfWeekIndex = inject(TUI_FIRST_DAY_OF_WEEK);
     protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,
     });

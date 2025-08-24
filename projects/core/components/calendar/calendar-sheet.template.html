@@ -1,11 +1,11 @@
 <div class="t-row t-row_weekday">
     <div
-        *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays | async"
+        *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays: firstDayOfWeekIndex() | async"
         class="t-cell"
         [textContent]="day"
     ></div>
 </div>
-<div *tuiLet="month | tuiCalendarSheet: true as sheet">
+<div *tuiLet="month | tuiCalendarSheet: firstDayOfWeekIndex() : true as sheet">
     <div
         *tuiRepeatTimes="let rowIndex of sheet.length"
         automation-id="tui-calendar-sheet__row"

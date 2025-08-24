@@ -63,9 +63,10 @@ export class TuiComboBox<T>
 
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
-    private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
-        (x) => x !== this && 'options' in x && isSignal(x.options),
-    );
+    private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>((x) => {
+        console.log(x);
+        return x !== this && 'options' in x && isSignal(x.options);
+    });
 
     private readonly options = computed(
         () =>
@@ -114,7 +115,7 @@ export class TuiComboBox<T>
 
     protected readonly newValueEffect = effect(() => {
         const stringified = this.stringify(this.value());
-
+        console.log(stringified);
         this.textfield.value.update((x) => stringified || x);
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -148,6 +149,7 @@ export class TuiComboBox<T>
     }
 
     public override writeValue(value: T | string | null): void {
+        console.log(value);
         super.writeValue(value);
         this.textfield.value.set(this.stringify(value));
     }
@@ -166,7 +168,7 @@ export class TuiComboBox<T>
         event.preventDefault();
 
         const options = this.options();
-
+        console.log(options);
         if (options.length === 1 && options[0]) {
             this.setValue(options[0]);
             this.toggleDropdown(false);

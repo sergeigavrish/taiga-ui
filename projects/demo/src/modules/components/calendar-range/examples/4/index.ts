@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDayOfWeek} from '@taiga-ui/cdk';
@@ -18,4 +18,10 @@ import {TuiCalendarRange} from '@taiga-ui/kit';
         },
     ],
 })
-export default class Example {}
+export default class Example {
+    protected readonly xxx = inject(TUI_FIRST_DAY_OF_WEEK);
+
+    public onClick(): void {
+        this.xxx.set(Math.floor(Math.random() * 7) as any);
+    }
+}
